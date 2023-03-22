@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { GeneralInput } from "../GeneralInput"
+import {TextInput} from "react-native";
+import {Eye} from "phosphor-react-native";
 
 export function PasswordInput() {
     const [passwordController, changePassword] = useState({
@@ -7,7 +9,7 @@ export function PasswordInput() {
         value: ''
     });
 
-    handleEditPassword = (text) => {
+    const handleEditPassword = (text) => {
         changePassword({
             view: text.split('').map((letter) => letter.replace(letter, '*')).join(''),
             value: text
@@ -15,11 +17,9 @@ export function PasswordInput() {
     }
 
     return (
-        <GeneralInput
-            autoCorrect={false}
-            placeholder="Digite sua senha"
-            onChangeText={handleEditPassword}
-            value={passwordController.view}
-        />
+    <TextInput
+        secureTextEntry={true}
+        ></TextInput
+>
     )
 }

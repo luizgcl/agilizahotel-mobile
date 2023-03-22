@@ -19,3 +19,7 @@ web-build/
 #lock-files
 package-lock.json
 yarn.lock
+
+#Firebase Config
+
+firebaseAuthConfig.js
