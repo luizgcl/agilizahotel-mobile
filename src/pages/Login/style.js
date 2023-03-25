@@ -5,8 +5,8 @@ export const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#f7f7f7',
       alignItems: 'center',
-      justifyContent: 'space-between',
-      paddingTop: 30
+      justifyContent: 'space-evenly',
+      paddingTop: 10
     },
     font: {
       fontSize: 20
@@ -14,12 +14,12 @@ export const styles = StyleSheet.create({
     textLogoPartOne: {
       color: '#00bf63',
       fontWeight: 'bold',
-      fontSize: 35
+      fontSize: 30
     },
     textLogoPartTwo: {
       color: '#85c',
       fontWeight: 'bold',
-      fontSize: 35
+      fontSize: 30
     },
     textLogo: {
       flexDirection: 'row'
@@ -29,7 +29,6 @@ export const styles = StyleSheet.create({
       color: '#fff',
     },
     joinButton: {
-      marginBottom: 40,
       backgroundColor: '#00bf63',
       padding: 10,
       borderRadius: 8,

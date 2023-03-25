@@ -1,25 +1,41 @@
+import { Eye, EyeClosed } from "phosphor-react-native";
 import { useState } from "react";
-import { GeneralInput } from "../GeneralInput"
-import {TextInput} from "react-native";
-import {Eye} from "phosphor-react-native";
+import { TouchableOpacity, View } from "react-native";
+import { Constants } from "../../../Constants";
+import { GeneralInput } from "../GeneralInput";
+import { style } from "./styles";
 
 export function PasswordInput() {
-    const [passwordController, changePassword] = useState({
-        view: '',
-        value: ''
-    });
+    const [password, setPassword] = useState();
+    const [isPasswordVisible, setPasswordVisible] = useState(false);
 
-    const handleEditPassword = (text) => {
-        changePassword({
-            view: text.split('').map((letter) => letter.replace(letter, '*')).join(''),
-            value: text
-        })
+    const handleTypePassword = (text) => {
+        setPassword(text)
     }
 
     return (
-    <TextInput
-        secureTextEntry={true}
-        ></TextInput
->
+        <View style={style.view}>
+            <GeneralInput
+                placeholder="Digite sua senha"
+                secureTextEntry={!isPasswordVisible}
+                collapsable={true}  
+                value={password}
+                onChangeText={handleTypePassword}      
+            />
+            <TouchableOpacity
+                onPress={() => setPasswordVisible(!isPasswordVisible)}        
+            >
+                {isPasswordVisible ?
+                    <EyeClosed
+                        size={32}
+                        color={Constants.colors.purple}
+                    /> :
+                    <Eye
+                        size={32}
+                        color={Constants.colors.purple}
+                    />
+                }
+            </TouchableOpacity>
+        </View>
     )
 }

@@ -1,14 +1,15 @@
-import React from 'react'
-import { Button, Text, TouchableOpacity, View } from 'react-native';
-import { styles } from './style'
-import { GeneralInput } from '../../components/GeneralInput'
-import { PasswordInput } from '../../components/PasswordInput'
 import { MapPinLine } from 'phosphor-react-native';
-import { Constants } from '../../Constants'
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Constants } from '../../../Constants';
+import { GeneralInput } from '../../components/GeneralInput';
+import { PasswordInput } from '../../components/PasswordInput';
+import { styles } from './style';
 
 export function Login() {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
 
           <MapPinLine
             size={80}
@@ -39,11 +40,16 @@ export function Login() {
               }}
             >
               <Text style={styles.font}>Esqueceu a senha? </Text>
-              <Button
-                style={styles.font}
-                title='Clique aqui'
-                color={'#85c'}
-              />
+              <TouchableOpacity>
+                <Text 
+                  style={{
+                    ...styles.font,
+                    color: '#85c'
+                  }}  
+                  >
+                    Clique aqui
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
     
@@ -52,6 +58,6 @@ export function Login() {
           >
             <Text style={styles.accessText}>Acessar</Text>
           </TouchableOpacity>
-      </View>   
+      </SafeAreaView>   
     )
 }
