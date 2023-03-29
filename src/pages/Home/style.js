@@ -25,6 +25,13 @@ export const style = StyleSheet.create({
   },
   titleOne: {
     fontWeight: 900,
-    fontSize: 16,
+    fontSize: 20,
+    marginBottom: 10
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    margin: 10,
+    padding: 10
   }
 })
