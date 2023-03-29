@@ -7,7 +7,12 @@ import { GeneralInput } from '../../components/GeneralInput';
 import { PasswordInput } from '../../components/PasswordInput';
 import { styles } from './style';
 
-export function Login() {
+export function Login({ navigation }) {
+
+    const handleClickForgetPassword = () => {
+      navigation.navigate('ForgetPassword')
+    }
+
     return (
         <SafeAreaView style={styles.container}>
 
@@ -40,7 +45,9 @@ export function Login() {
               }}
             >
               <Text style={styles.font}>Esqueceu a senha? </Text>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleClickForgetPassword}
+              >
                 <Text 
                   style={{
                     ...styles.font,

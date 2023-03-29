@@ -16,25 +16,18 @@ export function Home() {
         <View
           style={{flexDirection: 'row', gap: 6}}
         >
-          <Text
-              style={style.promotionText}
-            >
-              Não percam
+          <View>
+            <Text>Descontos de</Text>
+          </View>
+          <View>
+            <Text>
+              20%
             </Text>
-          <Text
-              style={{
-                ...style.promotionText,
-                color: '#07dfe3'
-              }}
-            >
-              20% OFF
-          </Text>
+          </View>
+          <View>
+            <Text>OFF</Text>
+          </View>
         </View>
-        <Text
-            style={style.promotionText}
-          >
-            na sua primeira reserva!
-        </Text>
        </SafeAreaView>
        <View style={style.content}>
         <Text style={style.titleOne}>Hotéis Disponíveis</Text>
