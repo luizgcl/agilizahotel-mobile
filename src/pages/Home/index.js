@@ -14,14 +14,13 @@ export function Home() {
       />
       <View style={style.content}>
         <Text style={style.titleOne}>Hotéis Disponíveis</Text>
-
-        <ScrollView>
           <FlatList
             data={[
               { key: '1', name: 'Suíte Master, Plaza Hotel', value: 250, locale: 'Minas Gerais, MG' },
               { key: '2', name: 'Suíte Comum, Hotel Imperial', value: 130, locale: 'São José do Rio Preto, SP' },
               { key: '3', name: 'Suíte Master Deluxe, Dream Hotel', value: 300, locale: 'Búzios, RJ' },
             ]}
+            keyExtractor={(_, index) => index}
             renderItem={
               ({ item }) => (
                 <View
@@ -71,7 +70,6 @@ export function Home() {
               )
             }
           />
-        </ScrollView>
       </View>
     </SafeAreaView>
   )

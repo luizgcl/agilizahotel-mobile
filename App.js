@@ -7,6 +7,7 @@ import { Home } from './src/pages/Home';
 import { Login } from './src/pages/Login';
 import { MyAccount } from './src/pages/MyAccount';
 import { Notifications } from './src/pages/Notifications';
+import { useState } from 'react';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

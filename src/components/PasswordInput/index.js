@@ -5,12 +5,13 @@ import { Constants } from "../../../Constants";
 import { GeneralInput } from "../GeneralInput";
 import { style } from "./styles";
 
-export function PasswordInput() {
+export function PasswordInput({ updatePassword }) {
     const [password, setPassword] = useState();
     const [isPasswordVisible, setPasswordVisible] = useState(false);
 
     const handleTypePassword = (text) => {
         setPassword(text)
+        updatePassword(text)
     }
 
     return (

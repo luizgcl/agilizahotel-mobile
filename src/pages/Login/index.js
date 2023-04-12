@@ -1,20 +1,46 @@
 import { MapPinLine } from 'phosphor-react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Constants } from '../../../Constants';
 import { GeneralInput } from '../../components/GeneralInput';
 import { PasswordInput } from '../../components/PasswordInput';
 import { styles } from './style';
+import { firebase } from "../../../firebase-connection";
 
 export function Login({ navigation }) {
+  const [user, setUser] = useState(null);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  
+  useEffect(() => {
+    if (user) {
+      navigation.navigate('Home')
+    }
+  }, [user]);
 
   const handleClickForgetPassword = () => {
     navigation.navigate('ForgetPassword')
   }
 
   const handleClickLogin = () => {
-    navigation.navigate('Home')
+    if (!email || !password) {
+      alert('Preencha os campos corretamente!')
+      return;
+    }
+    
+    firebase.auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        if (user.uid) {
+          setUser(user)
+          navigation.navigate('Home')
+        }
+      })
+      .catch((error) => {
+        if (error)
+          alert('Credenciais inválidas!');
+      });
   }
 
   return (
@@ -36,10 +62,13 @@ export function Login({ navigation }) {
         <Text>Usuário</Text>
         <GeneralInput
           placeholder="E-mail ou nome de usuário"
+          onChangeText={(email) => setEmail(email)}
         />
 
         <Text>Senha</Text>
-        <PasswordInput />
+        <PasswordInput 
+          updatePassword={(password) => setPassword(password)}
+        />
 
         <View
           style={{
