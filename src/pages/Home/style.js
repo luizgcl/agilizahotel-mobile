@@ -1,37 +1,39 @@
 import { StyleSheet } from "react-native";
+import { Constants } from "../../../Constants";
 
-export const style = StyleSheet.create({
+export const styles = StyleSheet.create({
   content: {
-    paddingTop: 10,
     marginHorizontal: 5,
   },
+  imageContainer: {
+    padding: 5,
+  },
   imageCard: {
-    width: '100%',
-    height: '35%',
-  },
-  promotionView: {
-    position: 'absolute',
-    top: 10,
-    width: '100%',
-    height: '35%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  },
-  promotionText: {
-    fontWeight: 900,
-    fontSize: 30,
-    color: '#fff',
+    width: 360,
+    height: 120,
   },
   titleOne: {
     fontWeight: 900,
     fontSize: 20,
     marginBottom: 10
   },
-  card: {
+  hotelCard: {
     backgroundColor: 'white',
     borderRadius: 10,
     margin: 10,
     padding: 10
+  },
+  hotelCardContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
+  },
+  hotelCardButton: {
+    padding: 8,
+    backgroundColor: Constants.colors.green,
+    borderRadius: 10
+  },
+  hotelCardButtonText: { 
+    color: 'white', 
+    fontWeight: 900 
   }
 })
