@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         color: Constants.colors.green,
     },
     button: {
-        padding: 20,
+        padding: 10,
         borderRadius: 10,
         backgroundColor: Constants.colors.green,
     },

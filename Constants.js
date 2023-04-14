@@ -1,6 +1,8 @@
 export const Constants = {
     colors: {
         green: '#00bf63',
-        purple: '#85c'
+        purple: '#85c',
+        white: '#fff',
+        gray: '#cfcfcf'
     }
 }
