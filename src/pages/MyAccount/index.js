@@ -1,16 +1,34 @@
 import { ArrowLeft, Barricade, Info } from "phosphor-react-native"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Text, TouchableOpacity } from "react-native"
 import { Image, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { globalStyle } from "../../shared/GlobalStyles"
 import { styles } from "./style"
+import { useLogin } from "../../hooks/use-login"
+import { firebase } from '../../../firebase-connection'
 
 export function MyAccount({ navigation }) {
+    const [isLogged, emailLogged, _, handleLogout] = useLogin({ email: '' })
     const [pressed, setPressed] = useState()
 
+    const [user, setUser] = useState({ name: '', cpf: '' })
+
+    useEffect(() => {
+        if (isLogged)
+            firebase.app().database()
+                .ref(`users/${emailLogged.toLowerCase().replace('.com', '')}`)
+                .get()
+                .then((value) => {
+                    let userFromDatabase = JSON.parse(JSON.stringify(value))
+                    setUser(userFromDatabase)
+                })
+                .catch((err) => console.error(err))
+    }, [])
+
     const handleClickLeaveApp = () => {
-        navigation.navigate('Login')
+        handleLogout()
+        navigation.navigate('Welcome')
     }
 
     return (
@@ -20,13 +38,22 @@ export function MyAccount({ navigation }) {
             >
                 <Image
                     style={styles.userImage}
-                    source={require('../../assets/avatar.png')}
+                    source={
+                        emailLogged?.toLowerCase() == 'luiizgcl@gmail.com' ?
+                        {uri: 'https://github.com/luizgcl.png'} :
+                        require('../../assets/avatar.png')
+                    }
                 />
-                <Text
-                    style={globalStyle.textBold}
-                >
-                    Luiz Gustavo
-                </Text>
+                <View>
+                    <Text
+                        style={globalStyle.textBold}
+                    >
+                        {user.name}
+                    </Text>
+                    <Text>
+                        {emailLogged?.toLowerCase()}
+                    </Text>
+                </View>
             </View>
 
             <View style={{gap: 1}}>

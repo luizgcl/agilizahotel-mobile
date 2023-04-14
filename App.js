@@ -4,10 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ForgetPassword } from './src/pages/ForgetPassword';
 import { Home } from './src/pages/Home';
 import { Login } from './src/pages/Login';
+import { Welcome } from './src/pages/Welcome';
 import { MyAccount } from './src/pages/MyAccount';
 import { Notifications } from './src/pages/Notifications';
 import { TabList } from './src/components/TabList';
 import { BellRinging, House, User } from 'phosphor-react-native';
+import { SignUp } from './src/pages/SignUp';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -74,8 +76,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, gestureEnabled: false }} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={Tabs} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={Tabs} options={{ headerShown: false, gestureEnabled: false }} />
         <Stack.Screen name="ForgetPassword" component={ForgetPassword} options={{ headerShown: true }} />
       </Stack.Navigator>
     </NavigationContainer>

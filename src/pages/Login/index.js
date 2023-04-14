@@ -6,47 +6,30 @@ import { Constants } from '../../../Constants';
 import { GeneralInput } from '../../components/GeneralInput';
 import { PasswordInput } from '../../components/PasswordInput';
 import { styles } from './style';
-import { firebase } from "../../../firebase-connection";
 import * as Animatable from 'react-native-animatable'
 import { globalStyle } from '../../shared/GlobalStyles';
+import { useLogin } from '../../hooks/use-login';
 
 export function Login({ navigation }) {
-  const [user, setUser] = useState(null);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const [isLogged, emailLogged, handleLogin] = useLogin({
+    email
+  })
   
   useEffect(() => {
-    if (user) {
+    if (isLogged) {
       navigation.navigate('Home')
     }
-  }, [user]);
+  }, []);
 
   const handleClickForgetPassword = () => {
     navigation.navigate('ForgetPassword')
   }
 
   const handleClickLogin = () => {
-    if (!email || !password) {
-      alert('Preencha os campos corretamente!')
-      return;
-    }
-    
-    firebase.auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(({ user }) => {
-        if (user.uid) {
-          setUser(user)
-          navigation.navigate('Home')
-        }
-      })
-      .catch((error) => {
-        if (error)
-          alert('Credenciais inválidas!');
-      })
-      .finally(() => {
-        setEmail(null)
-        setPassword(null)
-      });
+    handleLogin({ email, password })
   }
 
   return (
