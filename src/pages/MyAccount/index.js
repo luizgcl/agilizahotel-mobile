@@ -48,7 +48,7 @@ export function MyAccount({ navigation }) {
                     <Text
                         style={globalStyle.textBold}
                     >
-                        {user.name}
+                        {user?.name}
                     </Text>
                     <Text>
                         {emailLogged?.toLowerCase()}

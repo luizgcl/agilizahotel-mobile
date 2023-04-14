@@ -17,12 +17,11 @@ export function useLogin({ email }) {
           .then(({ user }) => {
             if (user.uid) {
               navigation.navigate('Home')
-
               localDatabase.set('loggedUser', email)
             }
           })
           .catch((error) => {
-            console.log(error)
+            console.error(error)
             if (error)
               alert('Credenciais inválidas!');
           })

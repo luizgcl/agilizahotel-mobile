@@ -8,9 +8,12 @@ import * as Animatable from 'react-native-animatable'
 import { firebase } from '../../../firebase-connection'
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useLogin } from "../../hooks/use-login";
 
 export function SignUp () {
     const navigation = useNavigation();
+
+    const [isLogged, loggedUser, handleLogin] = useLogin();
 
     const [email, setEmail] = useState(null);
     const [cpf, setCpf] = useState(null);
@@ -31,12 +34,12 @@ export function SignUp () {
         firebase.app().auth().createUserWithEmailAndPassword(email, password)
             .then((user) => {
                 if (user) {
-                    firebase.app().database().ref(`users/${email.replace('.com', '')}`).set({
+                    firebase.app().database().ref(`users/${email.toLowerCase().replace('.com', '')}`).set({
                         name,
                         cpf,
                     })
                     .then(() => {
-                        navigation.navigate('Home')
+                        handleLogin({email, password})
                     })
                     .catch(() => {
                         Alert.alert('Ops!', 'Ocorreu um erro ao cadastrar seus dados.')
@@ -45,7 +48,7 @@ export function SignUp () {
                 }
             })
             .catch((err) => {
-                console.log(err)
+                console.error(err)
                 Alert.alert('Ops!', 'Ocorreu um erro ao cadastrar seus dados.')
                 navigation.navigate('Welcome')
             })
