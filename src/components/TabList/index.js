@@ -4,23 +4,19 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { styles } from "./style";
 import { Constants } from "../../../Constants";
 
-
-
-
-
-
-
-
 export function TabList({ state, descriptors, navigation }) {
+  const [screen, setScreen] = useState('Inicio')
+
     return (
       <View style={styles.navContainer}>
         {state.routes.map((route) => {
             const [isPressed, setPressed] = useState()
-
+          
             const { options } = descriptors[route.key];
             
             function handleClickIcon () {
               navigation.navigate(route.name);
+              setScreen(route.name)
               setTimeout(() => {
                 setPressed(false)
               }, 0.2 * 1000)
@@ -34,7 +30,7 @@ export function TabList({ state, descriptors, navigation }) {
                 onPressIn={() => setPressed(true)}
                 key={route.key}
               >
-                { options.tabBarIcon({ color: isPressed ? Constants.colors.purple : '#111', size: 32 }) }
+                { options.tabBarIcon({ color: isPressed || screen == route.name ? Constants.colors.purple : '#111', size: 32 }) }
               </TouchableOpacity>
             );
         })}
