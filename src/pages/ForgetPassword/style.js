@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
         ...globalStyle.textBold,
         color: Constants.colors.green,
     },
+    text: {
+        fontFamily: 'Montserrat_400Regular',
+    },
     button: {
         padding: 10,
         borderRadius: 10,
@@ -21,7 +24,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: 'white',
-        fontWeight: 700
+        fontWeight: 700,
+        fontFamily: 'Montserrat_700Bold'
     }
 })
 

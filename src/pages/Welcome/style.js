@@ -25,11 +25,13 @@ export const styles = StyleSheet.create({
         logoPartOne: {
             color: Constants.colors.green,
             fontWeight: 'bold',
+            fontFamily: 'Montserrat_700Bold',
             fontSize: 30,
         },
         logoPartTwo: {
             color: Constants.colors.purple,
             fontWeight: 'bold',
+            fontFamily: 'Montserrat_700Bold',
             fontSize: 30
         },
     },
@@ -57,6 +59,7 @@ export const styles = StyleSheet.create({
     buttonText: {
         color: Constants.colors.white,
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'Montserrat_700Bold'
     }
 })

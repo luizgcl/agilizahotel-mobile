@@ -21,7 +21,8 @@ export const styles = StyleSheet.create({
     },
     label: {
         marginTop: 28,
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'Montserrat_400Regular',
     },
     buttonView: {
         marginTop: '15%',
@@ -40,6 +41,7 @@ export const styles = StyleSheet.create({
     buttonText: {
         color: Constants.colors.white,
         fontWeight: 'bold',
+        fontFamily: 'Montserrat_700Bold',
         fontSize: 18
     }
 })

@@ -42,10 +42,15 @@ export const styles = StyleSheet.create({
     },
     accountButtonText: { 
         color: '#222', 
-        fontSize: 20 
+        fontSize: 20,
+        fontFamily: 'Montserrat_400Regular', 
     },
     accountButtonTextHover: { 
         color: '#fff', 
-        fontSize: 20 
+        fontSize: 20 ,
+        fontFamily: 'Montserrat_400Regular',
+    },
+    text: {
+        fontFamily: 'Montserrat_400Regular'
     }
 })

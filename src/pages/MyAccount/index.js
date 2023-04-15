@@ -50,7 +50,7 @@ export function MyAccount({ navigation }) {
                     >
                         {user?.name}
                     </Text>
-                    <Text>
+                    <Text style={styles.text}>
                         {emailLogged?.toLowerCase()}
                     </Text>
                 </View>
@@ -81,6 +81,7 @@ export function MyAccount({ navigation }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={pressed ? styles.accountButtonHover : styles.accountButton}
+                    activeOpacity={0.9}
                     onPress={handleClickLeaveApp}
                     onPressIn={() => setPressed(true)}
                     onPressOut={() => setPressed(false)}

@@ -24,15 +24,18 @@ export const styles = StyleSheet.create({
     },
     font: {
       fontSize: 18,
+      fontFamily: 'Montserrat_400Regular',
     },
     textLogoPartOne: {
       color: Constants.colors.green,
       fontWeight: 'bold',
+      fontFamily: 'Montserrat_700Bold',
       fontSize: 30
     },
     textLogoPartTwo: {
       color: Constants.colors.purple,
       fontWeight: 'bold',
+      fontFamily: 'Montserrat_700Bold',
       fontSize: 30
     },
     textLogo: {
@@ -45,6 +48,7 @@ export const styles = StyleSheet.create({
     },
     accessText: {
       fontWeight: 'bold',
+      fontFamily: 'Montserrat_700Bold',
       fontSize: 18,
       color: Constants.colors.white,
     },

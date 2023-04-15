@@ -32,7 +32,7 @@ export function ForgetPassword({ navigation }) {
       </Text>
 
       <View>
-        <Text>E-mail</Text>
+        <Text style={styles.text}>E-mail</Text>
 
         <GeneralInput
           placeholder="Informe o e-mail cadastrado"

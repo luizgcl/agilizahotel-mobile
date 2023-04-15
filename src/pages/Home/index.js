@@ -53,7 +53,7 @@ export function Home() {
                       justifyContent: 'space-between'
                     }}
                   >
-                    <Text>{item.locale}, {item.uf}</Text>
+                    <Text style={styles.text}>{item.locale}, {item.uf}</Text>
                   </View>
                   <View
                     style={styles.hotelCardContainer}

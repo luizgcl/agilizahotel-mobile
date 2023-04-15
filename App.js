@@ -10,6 +10,7 @@ import { Notifications } from './src/pages/Notifications';
 import { TabList } from './src/components/TabList';
 import { BellRinging, House, User } from 'phosphor-react-native';
 import { SignUp } from './src/pages/SignUp';
+import { useFonts, Montserrat_400Regular, Montserrat_500Medium, Montserrat_700Bold } from '@expo-google-fonts/montserrat'
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -73,15 +74,25 @@ export function Tabs() {
 }
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Montserrat_400Regular, 
+    Montserrat_500Medium, 
+    Montserrat_700Bold
+  })
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, gestureEnabled: false }} />
-        <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={Tabs} options={{ headerShown: false, gestureEnabled: false }} />
-        <Stack.Screen name="ForgetPassword" component={ForgetPassword} options={{ headerShown: true }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, gestureEnabled: false }} />
+          <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="Home" component={Tabs} options={{ headerShown: false, gestureEnabled: false }} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPassword} options={{ headerShown: true }} />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }

@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   },
   titleOne: {
     fontWeight: 900,
+    fontFamily: 'Montserrat_700Bold',
     fontSize: 20,
     marginBottom: 10
   },
@@ -34,6 +35,10 @@ export const styles = StyleSheet.create({
   },
   hotelCardButtonText: { 
     color: 'white', 
-    fontWeight: 900 
+    fontWeight: 900 ,
+    fontFamily: 'Montserrat_700Bold'
+  },
+  text: {
+    fontFamily: 'Montserrat_400Regular'
   }
 })
