@@ -13,12 +13,12 @@ import { useLogin } from "../../hooks/use-login";
 export function SignUp () {
     const navigation = useNavigation();
 
-    const [isLogged, loggedUser, handleLogin] = useLogin();
-
     const [email, setEmail] = useState(null);
     const [cpf, setCpf] = useState(null);
     const [name, setName] = useState(null);
     const [password, setPassword] = useState(null);
+
+    const [isLogged, loggedUser, handleLogin] = useLogin({ email });
 
     const handleClickRegister = () => {
         if (!email || !cpf || !name || !password) {
