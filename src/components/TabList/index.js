@@ -5,35 +5,47 @@ import { styles } from "./style";
 import { Constants } from "../../../Constants";
 
 export function TabList({ state, descriptors, navigation }) {
-  const [screen, setScreen] = useState('Inicio')
-
     return (
       <View style={styles.navContainer}>
-        {state.routes.map((route) => {
-            const [isPressed, setPressed] = useState()
-          
-            const { options } = descriptors[route.key];
-            
-            function handleClickIcon () {
-              navigation.navigate(route.name);
-              setScreen(route.name)
-              setTimeout(() => {
-                setPressed(false)
-              }, 0.2 * 1000)
-            };
+        <View style={styles.content}>
+          {state.routes.map((route, index) => {
+              const [isPressed, setPressed] = useState()
+              const { options } = descriptors[route.key];
 
-            return (
-              <TouchableOpacity
-                accessibilityRole="button"
-                activeOpacity={1}
-                onPress={handleClickIcon}
-                onPressIn={() => setPressed(true)}
-                key={route.key}
-              >
-                { options.tabBarIcon({ color: isPressed || screen == route.name ? Constants.colors.purple : '#111', size: 32 }) }
-              </TouchableOpacity>
-            );
-        })}
+              const isFocused = state.index === index
+              
+              function handleClickIcon () {
+                navigation.navigate(route.name);
+                setTimeout(() => {
+                  setPressed(false)
+                }, 0.2 * 1000)
+              };
+
+              return (
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  activeOpacity={1}
+                  onPress={handleClickIcon}
+                  onPressIn={() => setPressed(true)}
+                  key={route.key}
+                >
+                  <View style={styles.button}>
+                    <View 
+                      style={[styles.innerButton, {
+                        backgroundColor: isFocused ? '#f8e2fd' : 'transparent'
+                      }]}>
+                      { options.tabBarIcon({ 
+                          color: isPressed || isFocused ?
+                           Constants.colors.purple : '#111', 
+                          size: 32 
+                        }) 
+                      }
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              );
+          })}
+        </View>
       </View>
     );
 }
