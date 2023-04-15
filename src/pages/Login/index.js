@@ -63,6 +63,7 @@ export function Login({ navigation }) {
           <Text style={styles.font}>Usuário</Text>
           <GeneralInput
             placeholder="E-mail ou nome de usuário"
+            autoCapitalize={false}
             value={email}
             onChangeText={(email) => setEmail(email)}
           />

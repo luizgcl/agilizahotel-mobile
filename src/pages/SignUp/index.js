@@ -9,6 +9,7 @@ import { firebase } from '../../../firebase-connection'
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useLogin } from "../../hooks/use-login";
+import { DocumentInput } from "../../components/DocumentInput";
 
 export function SignUp () {
     const navigation = useNavigation();
@@ -68,22 +69,21 @@ export function SignUp () {
                 >
                 <Text style={styles.label}>Nome completo</Text>
                 <GeneralInput
-                    placeholder="Nome"
+                    placeholder="Digite seu nome"
                     onChangeText={setName}
                 />
                 <Text style={styles.label}>CPF</Text>
-                <GeneralInput
-                    placeholder="CPF"
-                    onChangeText={setCpf}
+                <DocumentInput
+                    placeholder="Informe seu CPF"
+                    updateDocument={setCpf}
                 />
                 <Text style={styles.label}>E-mail</Text>
                 <GeneralInput
-                    placeholder="E-mail"
+                    placeholder="Informe seu e-mail"
                     onChangeText={setEmail}
                 />
                 <Text style={styles.label}>Senha</Text>
                 <PasswordInput
-                    placeholder="Senha"
                     updatePassword={(password) => setPassword(password)}
                 />
 
