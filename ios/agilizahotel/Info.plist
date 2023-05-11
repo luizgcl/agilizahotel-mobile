@@ -72,5 +72,11 @@
     <string>Light</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Permissão para acessar sua biblioteca</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Permissão para abrir sua camera</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Permissão para usar seu microfone</string>
   </dict>
 </plist>

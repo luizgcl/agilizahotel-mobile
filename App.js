@@ -11,6 +11,8 @@ import { TabList } from './src/components/TabList';
 import { BellRinging, House, User } from 'phosphor-react-native';
 import { SignUp } from './src/pages/SignUp';
 import { useFonts, Montserrat_400Regular, Montserrat_500Medium, Montserrat_700Bold } from '@expo-google-fonts/montserrat'
+import { MyPersonalInformation } from './src/pages/MyPersonalInformation';
+import { EditMyInformation } from './src/pages/EditMyInformation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -94,6 +96,16 @@ export default function App() {
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={Tabs} options={{ headerShown: false, gestureEnabled: false }} />
           <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+          <Stack.Screen 
+            name="MyPersonalInformation" 
+            component={MyPersonalInformation} 
+            options={{ headerShown: false }} 
+            initialParams={{ loggedUser: undefined }}/>      
+          <Stack.Screen 
+            name="EditMyInformation" 
+            component={EditMyInformation} 
+            options={{ headerShown: false }}
+            initialParams={{ loggedUser: undefined }} />
         </Stack.Navigator>
       </NavigationContainer>
   );

@@ -17,6 +17,33 @@ export const styles = StyleSheet.create({
         marginTop: 25,
         marginBottom: 35,
     },
+    cardContainer: {
+        flexDirection: 'row',
+        gap: 6,
+        justifyContent: 'center',
+        borderRadius: 30,
+        margin: 20,
+    },
+    cardButton: {
+        iconSize: 48,
+        padding: 15,
+        alignItems: 'center',
+        backgroundColor: 'white',
+        elevation: 10,
+        elevation: 10,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 3.80,
+        width: '50%',
+        borderRadius: 10
+    },
+    cardButtonText: {
+        fontSize: 20,
+    },
     accountButton: {
         padding: 8,
         borderTopWidth: 2,

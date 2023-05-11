@@ -1,6 +1,6 @@
 import { Eye, EyeClosed } from "phosphor-react-native";
 import { useState } from "react";
-import { TextInput, TouchableOpacity, View } from "react-native";
+import { Keyboard, TextInput, TouchableOpacity, View } from "react-native";
 import { Constants } from "../../../Constants";
 import { GeneralInput } from "../GeneralInput";
 import { style } from "./styles";
@@ -12,6 +12,7 @@ export function PasswordInput({ updatePassword }) {
     const handleTypePassword = (text) => {
         setPassword(text)
         updatePassword(text)
+        // Keyboard.dismiss()
     }
 
     return (
