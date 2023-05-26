@@ -23,7 +23,6 @@ export function EditMyInformation({ navigation }) {
         firebase.app().database().ref(`users/${emailLogged.toLowerCase().replace('.com', '')}`).get()
             .then((value) => {
                 let userFromDatabase = JSON.parse(JSON.stringify(value))
-                console.log(value)
                 setFormValues({
                     email: emailLogged,
                     name: userFromDatabase.name,

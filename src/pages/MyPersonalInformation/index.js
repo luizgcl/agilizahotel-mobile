@@ -49,12 +49,16 @@ export function MyPersonalInformation({ navigation }) {
                 {
                     text: 'Galeria',
                     style: 'default',
-                    onPress: handleOpenImageLibrary
+                    onPress: async () => {
+                        await handleOpenImageLibrary();
+                    }
                 },
                 {
                     text: 'Camera',
                     style: 'default',
-                    onPress: handleClickOpenCamera
+                    onPress: async () => {
+                        await handleClickOpenCamera();
+                    }
                 }
             ],
             {
@@ -64,13 +68,13 @@ export function MyPersonalInformation({ navigation }) {
         );
     }
 
-    function handleOpenImageLibrary() {
-        launchImageLibrary({
+    async function handleOpenImageLibrary() {
+       await launchImageLibrary({
             mediaType: 'photo',
             includeBase64: true,
             includeExtra: true,
-            quality: 0.5
-        }).then((result) => {
+            quality: 0.1
+        }).then(async (result) => {
             if (result.didCancel) return;
 
             if (result.errorMessage) return;
@@ -86,8 +90,9 @@ export function MyPersonalInformation({ navigation }) {
             }
     
             setAvatar(data);
-            handleUpdateUserInfo();
-        }).catch(() => {
+            await handleUpdateUserInfo();
+        }).catch((err) => {
+            console.error(err)
             Alert.alert(
                 'Ops!',
                 'Ocorreu um erro ao importar a foto de sua galeria, tente novamente.'
@@ -101,6 +106,7 @@ export function MyPersonalInformation({ navigation }) {
             mediaType: 'photo',
             saveToPhotos: false,
             cameraType: 'front',
+            includeBase64: true,
             quality: 1
         }
 
@@ -144,13 +150,15 @@ export function MyPersonalInformation({ navigation }) {
             </View>
             <View style={styles.mainContainer}>
                 <View style={styles.imageContainer}>
-                    <TouchableOpacity onPress={handleOpenImagePicker}>
+                    <TouchableOpacity onPress={async() => {
+                        await handleOpenImagePicker();
+                    }}>
                         <Image
                             style={styles.userImage}
                             source={
-                                avatar ? { uri: 'data:image/png;base64,' + avatar.base64} : 
-                                user ? {uri: 'data:image/png;base64,' + user.imageBase64 } :
-                                require('../../assets/avatar.png')
+                                user ? {
+                                    uri: `data:image/png;base64,${user.imageBase64}` 
+                                } : require('../../assets/avatar.png')
                             }
                         />
                     </TouchableOpacity>

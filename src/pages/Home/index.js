@@ -4,8 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { styles } from './style'
 import { globalStyle } from '../../shared/GlobalStyles'
 import { firebase } from "../../../firebase-connection";
+import { HotelItemList } from '../../components/HotelItemList'
 
-export function Home() {
+export function Home({ navigation }) {
   const [hotels, setHotels] = useState([])
 
   useEffect(() => {
@@ -22,6 +23,9 @@ export function Home() {
 
   return (
     <SafeAreaView>
+      <TouchableOpacity onPress={
+        () => navigation.navigate('ViaCep')
+      }><Text>ViaCEP</Text></TouchableOpacity>
       <View
         style={styles.imageContainer}
       >
@@ -37,38 +41,9 @@ export function Home() {
             keyExtractor={(_, index) => index}
             renderItem={
               ({ item }) => (
-                <View
-                  style={styles.hotelCard}
-                >
-                  <Text
-                    style={{
-                      ...globalStyle.textBold,
-                      fontSize: 16
-                    }}>
-                    {item.name}
-                  </Text>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between'
-                    }}
-                  >
-                    <Text style={styles.text}>{item.locale}, {item.uf}</Text>
-                  </View>
-                  <View
-                    style={styles.hotelCardContainer}
-                  >
-                    <TouchableOpacity
-                      style={styles.hotelCardButton}
-                    >
-                      <Text
-                        style={styles.hotelCardButtonText}
-                      >
-                        Ver opções
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
+                <HotelItemList
+                  hotel={item}
+                />
               )
             }
           />
