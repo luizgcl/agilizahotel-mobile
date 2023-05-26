@@ -13,6 +13,7 @@ import { SignUp } from './src/pages/SignUp';
 import { useFonts, Montserrat_400Regular, Montserrat_500Medium, Montserrat_700Bold } from '@expo-google-fonts/montserrat'
 import { MyPersonalInformation } from './src/pages/MyPersonalInformation';
 import { EditMyInformation } from './src/pages/EditMyInformation';
+import { ViaCep } from './src/pages/ViaCep';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -106,6 +107,11 @@ export default function App() {
             component={EditMyInformation} 
             options={{ headerShown: false }}
             initialParams={{ loggedUser: undefined }} />
+          <Stack.Screen
+            name="ViaCep"
+            component={ViaCep}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
   );
